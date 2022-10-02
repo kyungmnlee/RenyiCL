@@ -44,7 +44,7 @@ python main_renyicl.py \
   --multiprocessing-distributed \
   --world-size 1 \
   --rank 0 \
-  --data /data/ImgageNet/ \
+  --data /data/ImageNet/ \
   --outdir ../outdir/ \
   --trial renyicl_100ep
 ```
@@ -56,7 +56,7 @@ python main_renyicl.py \
   --dist-url tcp://localhost:10002 \
   --epochs 100 \
   --multiprocessing-distributed --world-size 1 --rank 0 \
-  --data /data/ImgageNet/ \
+  --data /data/ImageNet/ \
   --n_crops 6 \
   --outdir /tmp/ \
   --trial renyicl_100ep_mc 
@@ -69,7 +69,7 @@ python main_renyicl.py \
   --dist-url tcp://localhost:10002 \
   --epochs 300 \
   --multiprocessing-distributed --world-size 1 --rank 0 \
-  --data /data/ImgageNet/ \
+  --data /data/ImageNet/ \
   --outdir /tmp/ \
   --trial renyicl_300ep_mc \
   --n_crops 6
@@ -83,7 +83,7 @@ python main_mocov3.py \
   --dist-url tcp://localhost:10002 \
   --epochs 100 \
   --multiprocessing-distributed --world-size 1 --rank 0 \
-  --data /data/ImgageNet/ \
+  --data /data/ImageNet/ \
   --outdir /tmp/ \
   --trial mocov3_100ep_mc \
   --n_crops 6
