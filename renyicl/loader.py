@@ -10,7 +10,6 @@ class MultiCropsTransform:
         self.tar_view = tar_view
         self.loc_view = loc_view
         self.n_crops = n_crops
-        self.enable_scalemix = enable_scalemix
 
     def __call__(self, x):
         crops = []
