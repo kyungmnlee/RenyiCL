@@ -54,9 +54,9 @@ parser.add_argument('--warmup-epochs', default=10, type=int, metavar='N',
 parser.add_argument('--optimizer', default='lars', type=str,
                     choices=['lars', 'adamw', 'sgd'],
                     help='optimizer used (default: sgd)')
-parser.add_argument('-b', '--batch-size', default=4096, type=int,
+parser.add_argument('-b', '--batch-size', default=1024, type=int,
                     metavar='N',
-                    help='mini-batch size (default: 4096), this is the total '
+                    help='mini-batch size (default: 1024), this is the total '
                          'batch size of all GPUs on all nodes when '
                          'using Data Parallel or Distributed Data Parallel')
 parser.add_argument('--lr', '--learning-rate', default=0.6, type=float,
