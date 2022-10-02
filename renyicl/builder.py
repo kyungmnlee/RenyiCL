@@ -14,7 +14,6 @@ class RenyiCL(nn.Module):
         # build encoders
         self.source_encoder = backbone(num_classes=mlp_dim)
         self.target_encoder = backbone(num_classes=mlp_dim)
-
         self._build_projector_and_predictor_mlps(dim, mlp_dim)
 
         for param_s, param_t in zip(self.source_encoder.parameters(), self.target_encoder.parameters()):
@@ -119,8 +118,6 @@ class RenyiCL(nn.Module):
             # compute momentum features as targets
             f_t.append(self.target_encoder(images[0]))
             f_t.append(self.target_encoder(images[1]))
-            # k0 = self.target_encoder(images[0])
-            # k1 = self.target_encoder(images[1])
 
         loss = 0.0
         mi = 0.0
@@ -138,8 +135,6 @@ class RenyiCL(nn.Module):
             mi += self.mutual_information(pos, neg)
 
         return loss, mi/2
-
-
 
 class RenyiCL_ResNet(RenyiCL):
     def _build_projector_and_predictor_mlps(self, dim, mlp_dim):
@@ -268,8 +263,6 @@ class MoCov3(nn.Module):
         mi = mi / (len(images) - 1)
 
         return loss, mi/2
-
-
 
 class MoCov3_ResNet(MoCov3):
     def _build_projector_and_predictor_mlps(self, dim, mlp_dim):
