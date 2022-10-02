@@ -167,7 +167,6 @@ def main():
         # Simply call main_worker function
         main_worker(args.gpu, ngpus_per_node, args)
 
-
 def main_worker(gpu, ngpus_per_node, args):
     args.gpu = gpu
 
@@ -232,20 +231,9 @@ def main_worker(gpu, ngpus_per_node, args):
         raise NotImplementedError("Only DistributedDataParallel is supported.")
     print(model) # print model after SyncBatchNorm
     
-    if args.optimizer == 'lars':
-        optimizer = renyicl.optimizer.LARS(model.parameters(), args.lr,
-                                        weight_decay=args.weight_decay,
-                                        momentum=args.momentum)
-    elif args.optimizer == 'adamw':
-        optimizer = torch.optim.AdamW(model.parameters(), args.lr,
-                                weight_decay=args.weight_decay)
-    elif args.optimizer == 'lamb':
-        optimizer = Lamb(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
-    elif args.optimizer == 'sgd':
-        optimizer = torch.optim.SGD(model.parameters(), args.lr,
-                                weight_decay=args.weight_decay,
-                                momentum=args.momentum)
-        
+    optimizer = renyicl.optimizer.LARS(model.parameters(), args.lr,
+                                       weight_decay=args.weight_decay,
+                                       momentum=args.momentum)        
     scaler = torch.cuda.amp.GradScaler()
     summary_writer = SummaryWriter(args.trial_dir) if args.rank == 0 else None
 
@@ -419,12 +407,10 @@ def train(train_loader, model, optimizer, scaler, summary_writer, epoch, args):
         if i % args.print_freq == 0:
             progress.display(i)
 
-
 def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
     torch.save(state, filename)
     if is_best:
         shutil.copyfile(filename, 'model_best.pth.tar')
-
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
@@ -448,7 +434,6 @@ class AverageMeter(object):
     def __str__(self):
         fmtstr = '{name} {val' + self.fmt + '} ({avg' + self.fmt + '})'
         return fmtstr.format(**self.__dict__)
-
 
 class ProgressMeter(object):
     def __init__(self, num_batches, meters, prefix=""):

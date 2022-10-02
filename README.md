@@ -37,12 +37,15 @@ The code has been tested with CUDA 11.3, PyTorch 1.11.0 and timm 0.4.9.
 For 100 epoch without multi-crops:
 ```
 python main_renyicl.py \
-  --moco-m-cos --crop-min=.2 \
+  --ema-cos \
+  --crop-min=.2 \
   --dist-url tcp://localhost:10002 \
   --epochs 100 \
-  --multiprocessing-distributed --world-size 1 --rank 0 \
+  --multiprocessing-distributed \
+  --world-size 1 \
+  --rank 0 \
   --data /data/ImgageNet/ \
-  --outdir /tmp/ \
+  --outdir ../outdir/ \
   --trial renyicl_100ep
 ```
 
