@@ -52,25 +52,27 @@ python main_renyicl.py \
 For 100 epoch with multi-crops:
 ```
 python main_renyicl.py \
-  --moco-m-cos --crop-min=.2 \
+  --ema-cos \
+  --crop-min=.2 \
   --dist-url tcp://localhost:10002 \
   --epochs 100 \
   --multiprocessing-distributed --world-size 1 --rank 0 \
   --data /data/ImageNet/ \
   --n_crops 6 \
-  --outdir /tmp/ \
+  --outdir ../outdir/ \
   --trial renyicl_100ep_mc 
 ```
 
 To reproduce our results in main paper:
 ```
 python main_renyicl.py \
-  --moco-m-cos --crop-min=.2 \
+  --ema-cos \
+  --crop-min=.2 \
   --dist-url tcp://localhost:10002 \
   --epochs 300 \
   --multiprocessing-distributed --world-size 1 --rank 0 \
   --data /data/ImageNet/ \
-  --outdir /tmp/ \
+  --outdir ../outdir/ \
   --trial renyicl_300ep_mc \
   --n_crops 6
 ```
@@ -79,12 +81,13 @@ Then, it will results 76.2% in ImageNet linear evaluation protocol.
 To run MoCo v3 with multi-crops:
 ```
 python main_mocov3.py \
-  --moco-m-cos --crop-min=.2 \
+  --ema-cos \
+  --crop-min=.2 \
   --dist-url tcp://localhost:10002 \
   --epochs 100 \
   --multiprocessing-distributed --world-size 1 --rank 0 \
   --data /data/ImageNet/ \
-  --outdir /tmp/ \
+  --outdir ../outdir/ \
   --trial mocov3_100ep_mc \
   --n_crops 6
 ```
