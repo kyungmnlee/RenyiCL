@@ -1,7 +1,8 @@
 ## RenyiCL: Contrastive Learning with Skew Renyi Divergence
 
 ### Introduction
-This is an official PyTorch implementation of NeurIPS 2022 paper [RényiCL: Contrastive Learning with skew Rényi Divergence](https://arxiv.org/abs/2208.06270).
+This is an official PyTorch implementation of NeurIPS 2022 paper 
+[RényiCL: Contrastive Learning with skew Rényi Divergence](https://arxiv.org/abs/2208.06270).
 
 ### Results
 <table><tbody>
